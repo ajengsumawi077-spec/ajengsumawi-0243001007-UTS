@@ -1,0 +1,1386 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Kenali Desa Wisata Purwabakti, Pamijahan bersama Nyaah Lembur.">
+  <title>Nyaah Lembur</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171813;
+      --muted: #77796f;
+      --line: #dedfd7;
+      --soft: #f5f5f1;
+      --paper: #fff;
+      --lime: #d3dc27;
+      --lime-dark: #b7c01a;
+      --green: #355d3b;
+      --danger: #b54032;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      min-height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--soft);
+      color: var(--ink);
+    }
+    button, input, textarea { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid #87910c;
+      outline-offset: 2px;
+    }
+    .shell {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0 auto;
+      background: var(--paper);
+      position: relative;
+      padding-bottom: 72px;
+      box-shadow: 0 0 0 1px rgba(23,24,19,.035);
+    }
+    .topbar {
+      min-height: 58px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      position: sticky;
+      z-index: 4;
+      top: 0;
+    }
+    .brand {
+      border: 0;
+      padding: 0;
+      background: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 850;
+      font-size: 15px;
+      letter-spacing: -.5px;
+      cursor: pointer;
+    }
+    .brand-mark {
+      width: 25px; height: 25px;
+      background: var(--lime);
+      display: grid; place-items: center;
+      border-radius: 50% 50% 50% 12%;
+      font-size: 13px;
+    }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .icon-button {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+    .icon-button svg { width: 17px; height: 17px; }
+    main { min-height: calc(100vh - 136px); min-height: calc(100dvh - 136px); }
+    .page { padding: 23px 20px 96px; }
+    .eyebrow {
+      font-size: 10px;
+      line-height: 1.4;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 750;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-size: 26px;
+      line-height: 1.13;
+      letter-spacing: -.9px;
+      margin: 7px 0 9px;
+      font-weight: 820;
+    }
+    h2 { font-size: 19px; line-height: 1.2; letter-spacing: -.45px; margin: 5px 0 7px; }
+    h3 { font-size: 14px; line-height: 1.35; margin: 0 0 5px; }
+    .lede { color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0; }
+    .hero {
+      margin: 18px 20px 22px;
+      min-height: 224px;
+      padding: 23px 21px;
+      background: var(--lime);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      width: 210px; height: 210px;
+      border: 1px solid rgba(23,24,19,.18);
+      border-radius: 50%;
+      right: -80px; bottom: -130px;
+      box-shadow: 0 0 0 18px rgba(23,24,19,.035), 0 0 0 38px rgba(23,24,19,.03);
+    }
+    .hero h1 { max-width: 255px; font-size: 31px; margin-top: 8px; }
+    .hero p { max-width: 245px; margin: 0; font-size: 13px; line-height: 1.5; }
+    .hero .btn { align-self: flex-start; position: relative; z-index: 1; }
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--ink);
+      background: var(--lime);
+      border-radius: 2px;
+      padding: 0 17px;
+      font-weight: 750;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background .16s, transform .16s;
+    }
+    .btn:hover { background: #dfe75b; }
+    .btn:active { transform: translateY(1px); }
+    .btn.dark { color: white; background: var(--ink); }
+    .btn.dark:hover { background: #383a32; }
+    .btn.outline { background: white; }
+    .btn.ghost { border-color: transparent; background: transparent; padding-inline: 8px; }
+    .btn.full { width: 100%; }
+    .btn:disabled { opacity: .48; cursor: not-allowed; }
+    .section-heading {
+      padding: 0 20px;
+      margin: 21px 0 12px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .section-heading h2 { margin: 0; font-size: 17px; }
+    .text-link { border: 0; background: none; padding: 2px 0; color: #333; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .quick-row { display: flex; gap: 9px; overflow-x: auto; padding: 0 20px 5px; scrollbar-width: none; }
+    .quick-row::-webkit-scrollbar { display: none; }
+    .quick-chip { flex: 0 0 auto; border: 1px solid var(--line); background: white; padding: 10px 13px; font-size: 12px; cursor: pointer; }
+    .quick-chip:hover { border-color: var(--ink); }
+    .package-list { display: grid; gap: 12px; padding: 0 20px; }
+    .package-card {
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 102px 1fr;
+      min-height: 132px;
+      cursor: pointer;
+      background: white;
+    }
+    .package-card:hover { border-color: #9da23d; }
+    .package-art {
+      min-height: 130px;
+      position: relative;
+      overflow: hidden;
+      display: grid; place-items: center;
+      background: #dfe6c8;
+      font-size: 43px;
+    }
+    .package-art:before, .scene:before {
+      content: "";
+      position: absolute;
+      width: 150%; height: 43%;
+      left: -20%; bottom: -6%;
+      border-radius: 50% 50% 0 0;
+      background: rgba(56,94,58,.28);
+      transform: rotate(-8deg);
+    }
+    .package-art span { position: relative; z-index: 1; filter: drop-shadow(0 3px 1px rgba(0,0,0,.12)); }
+    .package-copy { padding: 12px 12px 11px; display: flex; flex-direction: column; min-width: 0; }
+    .tag {
+      align-self: flex-start;
+      border: 1px solid var(--line);
+      padding: 3px 6px;
+      font-size: 9px;
+      line-height: 1.2;
+      color: #55574e;
+      margin-bottom: 6px;
+    }
+    .package-copy h3 { font-size: 14px; margin-bottom: 4px; }
+    .package-copy p { margin: 0; font-size: 11px; line-height: 1.45; color: var(--muted); }
+    .price-row { margin-top: auto; padding-top: 8px; display: flex; align-items: baseline; justify-content: space-between; gap: 5px; }
+    .price { font-size: 14px; font-weight: 800; }
+    .price small { font-size: 10px; font-weight: 500; color: var(--muted); }
+    .rating { font-size: 10px; color: #555; }
+    .bottom-nav {
+      position: fixed;
+      width: 100%;
+      height: 68px;
+      bottom: 0;
+      left: 0;
+      background: rgba(255,255,255,.97);
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 6;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .nav-item {
+      background: transparent;
+      border: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 5px;
+      color: #74756e;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .nav-indicator { width: 18px; height: 3px; background: currentColor; }
+    .nav-item.active { color: var(--ink); background: var(--lime); }
+    .back-row { margin: -4px 0 15px; }
+    .back {
+      border: 0; background: none; padding: 4px 0;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      display: inline-flex; gap: 8px; align-items: center;
+    }
+    .scene {
+      height: 218px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      margin: -23px -20px 19px;
+      font-size: 78px;
+      background: linear-gradient(160deg, #dce5c5 0 43%, #a9bd83 43% 65%, #607a4b 65%);
+    }
+    .scene:before { height: 40%; background: rgba(255,255,255,.25); bottom: -23%; transform: rotate(9deg); }
+    .scene span { position: relative; z-index: 1; }
+    .info-line { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 12px 0; font-size: 12px; }
+    .info-line span:first-child { color: var(--muted); }
+    .detail-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
+    .field { display: grid; gap: 6px; margin: 13px 0; }
+    .field label { font-size: 11px; font-weight: 750; }
+    .field input, .field textarea, .field select {
+      width: 100%; min-height: 44px;
+      border: 1px solid #cfd0c8;
+      border-radius: 2px;
+      padding: 11px 12px;
+      background: white;
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .field textarea { min-height: 78px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #92938c; }
+    .field .help { margin: -1px 0 0; font-size: 10px; color: var(--muted); }
+    .form-card { border: 1px solid var(--line); padding: 13px; margin: 13px 0; }
+    .form-card > h3 { margin-bottom: 12px; }
+    .selected-package { padding: 14px; margin: 15px 0 18px; border: 1px solid #cfd0c8; }
+    .selected-package p { margin: 4px 0 0; font-size: 11px; line-height: 1.5; color: var(--muted); }
+    .quantity {
+      padding: 11px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      border-bottom: 1px solid #ecece7;
+    }
+    .quantity:last-of-type { border: 0; }
+    .quantity strong { display: block; font-size: 12px; }
+    .quantity small { display: block; margin-top: 4px; font-size: 10px; color: var(--muted); }
+    .stepper { display: flex; align-items: center; gap: 10px; }
+    .stepper button {
+      width: 28px; height: 28px;
+      background: white; border: 1px solid #cfd0c8;
+      display: grid; place-items: center; cursor: pointer;
+    }
+    .stepper output { min-width: 12px; text-align: center; font-size: 12px; font-weight: 750; }
+    .helper-note { margin: 9px 0 0; font-size: 10px; color: var(--muted); }
+    .summary { border: 1px solid var(--line); padding: 13px; margin: 16px 0; }
+    .summary h3 { margin: 0 0 7px; }
+    .summary-line { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 11px; color: #5d5e57; }
+    .summary-line strong { color: var(--ink); }
+    .summary-line.total { border-top: 1px solid var(--line); margin-top: 3px; padding-top: 10px; font-size: 13px; color: var(--ink); font-weight: 800; }
+    .sticky-action {
+      position: sticky; bottom: 68px;
+      background: white;
+      padding: 9px 0 0;
+      margin-top: 16px;
+    }
+    .payment-methods { display: grid; gap: 8px; margin: 16px 0; }
+    .method {
+      min-height: 58px; padding: 10px 12px;
+      border: 1px solid var(--line);
+      display: flex; align-items: center; gap: 12px;
+      text-align: left; background: white; cursor: pointer;
+    }
+    .method.selected { border: 2px solid var(--ink); background: #fcfce9; padding: 9px 11px; }
+    .method-icon { width: 34px; height: 34px; display: grid; place-items: center; background: var(--soft); font-size: 15px; font-weight: 800; }
+    .method-text { flex: 1; }
+    .method-text strong { display: block; font-size: 12px; }
+    .method-text small { display: block; color: var(--muted); font-size: 10px; margin-top: 4px; }
+    .radio { width: 16px; height: 16px; border: 1px solid #aeb0a7; border-radius: 50%; display: grid; place-items: center; }
+    .selected .radio:after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+    .notice { border-left: 3px solid var(--lime-dark); background: #fafbe8; padding: 11px 12px; font-size: 11px; line-height: 1.5; margin: 14px 0; }
+    .countdown { text-align: center; border: 1px solid var(--line); padding: 15px; margin: 14px 0; }
+    .countdown strong { display: block; font-size: 25px; letter-spacing: 1px; margin: 5px 0; }
+    .countdown small { color: var(--muted); font-size: 10px; }
+    .account-box { border: 1px solid var(--line); margin: 13px 0; padding: 14px; }
+    .account-box .bank-name { font-size: 10px; color: var(--muted); }
+    .account-number { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; font-size: 17px; font-weight: 800; letter-spacing: .5px; }
+    .copy-btn { min-height: 31px; border: 1px solid var(--ink); background: white; padding: 0 9px; font-size: 10px; font-weight: 700; cursor: pointer; }
+    .qr {
+      width: 158px; height: 158px;
+      border: 9px solid white;
+      outline: 1px solid var(--line);
+      margin: 13px auto;
+      background-color: white;
+      background-image:
+        linear-gradient(90deg, #171813 8%, transparent 8% 16%, #171813 16% 22%, transparent 22% 30%, #171813 30% 39%, transparent 39% 45%, #171813 45% 51%, transparent 51% 58%, #171813 58% 65%, transparent 65% 72%, #171813 72% 77%, transparent 77% 84%, #171813 84% 92%, transparent 92%),
+        linear-gradient(#171813 8%, transparent 8% 14%, #171813 14% 20%, transparent 20% 28%, #171813 28% 35%, transparent 35% 44%, #171813 44% 49%, transparent 49% 56%, #171813 56% 64%, transparent 64% 72%, #171813 72% 80%, transparent 80% 87%, #171813 87% 93%, transparent 93%);
+      background-blend-mode: multiply;
+      position: relative;
+    }
+    .qr-image {
+      display: block;
+      width: 158px;
+      height: 158px;
+      margin: 13px auto;
+      border: 1px solid var(--line);
+      object-fit: cover;
+    }
+    .qr:before, .qr:after { content: ""; position: absolute; width: 34px; height: 34px; border: 7px solid #171813; background: white; box-shadow: inset 0 0 0 5px white, inset 0 0 0 11px #171813; top: 0; left: 0; }
+    .qr:after { left: auto; right: 0; }
+    .qr span { position: absolute; bottom: 0; left: 0; width: 34px; height: 34px; border: 7px solid #171813; background: white; box-shadow: inset 0 0 0 5px white, inset 0 0 0 11px #171813; }
+    .upload {
+      border: 1px dashed #9a9c92;
+      padding: 17px 12px;
+      text-align: center;
+      background: #fcfcfa;
+      cursor: pointer;
+    }
+    .upload input { display: none; }
+    .upload strong { display: block; font-size: 12px; }
+    .upload small { display: block; margin-top: 4px; font-size: 10px; color: var(--muted); }
+    .status-card { border: 1px solid var(--line); padding: 16px; margin: 16px 0; }
+    .status-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .status-pill { padding: 5px 8px; background: #f4f4d4; font-size: 10px; font-weight: 700; }
+    .progress { display: flex; align-items: center; justify-content: space-between; margin: 20px 0 8px; }
+    .progress .dot { width: 24px; height: 24px; border: 1px solid #c7c8be; background: white; border-radius: 50%; display: grid; place-items: center; font-size: 10px; z-index: 1; }
+    .progress .dot.done { background: var(--lime); border-color: var(--lime-dark); }
+    .progress-track { height: 1px; background: #d4d5cb; flex: 1; margin: 0 -1px; }
+    .order-card { border: 1px solid var(--line); padding: 14px; margin: 10px 0; cursor: pointer; }
+    .order-card:hover { border-color: var(--ink); }
+    .order-card-top { display: flex; justify-content: space-between; gap: 9px; align-items: flex-start; }
+    .order-code { margin: 7px 0 4px; font-size: 10px; color: var(--muted); }
+    .order-meta { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--muted); margin-top: 11px; }
+    .profile-head { padding: 19px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 13px; }
+    .avatar { width: 50px; height: 50px; display: grid; place-items: center; background: var(--lime); font-size: 21px; font-weight: 800; }
+    .profile-row { width: 100%; padding: 15px 0; background: white; border: 0; border-bottom: 1px solid var(--line); text-align: left; display: flex; align-items: center; justify-content: space-between; font-size: 12px; cursor: pointer; }
+    .profile-history { padding: 0; }
+    .profile-history .profile-row { padding: 14px 13px 8px; border: 0; }
+    .profile-history .lede { padding: 0 13px 13px; }
+    .empty { border: 1px solid var(--line); padding: 28px 18px; text-align: center; margin-top: 17px; }
+    .empty .empty-icon { width: 55px; height: 55px; margin: 0 auto 13px; display: grid; place-items: center; background: #f5f5e7; font-size: 25px; }
+    .empty p { margin: 5px auto 15px; max-width: 230px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+    .success-mark {
+      width: 66px; height: 66px; margin: 25px auto 15px;
+      background: var(--lime);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 30px; font-weight: 800;
+    }
+    .center { text-align: center; }
+    .toast {
+      position: fixed; z-index: 12; bottom: 84px; left: 50%;
+      transform: translate(-50%, 12px);
+      padding: 11px 16px; max-width: calc(100vw - 32px);
+      background: var(--ink); color: white; font-size: 12px;
+      opacity: 0; pointer-events: none; transition: .2s;
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .divider { height: 1px; background: var(--line); margin: 17px 0; }
+    .auth-switch { display: flex; gap: 12px; margin: 20px 0; border-bottom: 1px solid var(--line); }
+    .auth-switch button { background: transparent; border: 0; padding: 0 0 10px; color: var(--muted); font-size: 12px; cursor: pointer; }
+    .auth-switch button.active { color: var(--ink); border-bottom: 2px solid var(--lime-dark); font-weight: 800; }
+    .mobile-only-note { font-size: 10px; color: var(--muted); }
+    .btn:not(.outline):not(.ghost):not(.dark) { color: #fff; }
+    .btn { border-radius: 2px; box-shadow: none; }
+    .topbar { display: none; }
+    body { background: #fff; font-family: Roboto, "Arial Narrow", Arial, sans-serif; }
+    .shell { max-width: 430px; min-height: 100vh; min-height: 100dvh; padding-bottom: 64px; box-shadow: none; }
+    main { min-height: calc(100vh - 64px); min-height: calc(100dvh - 64px); }
+    .page { padding: 16px 16px 88px; }
+    .screen-header {
+      min-height: 54px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #e6e6e6;
+      background: #fff;
+    }
+    .screen-header h1 { margin: 0; font-size: 18px; letter-spacing: -.3px; }
+    .screen-header button {
+      min-width: 24px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .bottom-nav { max-width: 430px; height: 64px; }
+    .nav-item.active { color: #fff; background: var(--lime); }
+    .welcome-page { padding: 0 16px 88px; }
+    .welcome-image {
+      height: 258px;
+      margin: 0 -16px 22px;
+      background: #d6e5ad url("assets/purwabakti.jpg") center 48% / cover no-repeat;
+    }
+    .welcome-page h1 { font-size: 24px; max-width: 310px; }
+    .welcome-steps { margin: 20px 0; }
+    .welcome-step { display: grid; grid-template-columns: 35px 1fr; gap: 9px; margin: 13px 0; font-size: 12px; }
+    .welcome-step strong { font-size: 13px; }
+    .welcome-step p { margin: 3px 0 0; color: var(--muted); line-height: 1.4; }
+    .welcome-actions { display: grid; gap: 8px; }
+    .welcome-actions .btn { width: 100%; }
+    .auth-page { padding-top: 37px; }
+    .auth-page h1 { font-size: 23px; margin-bottom: 8px; }
+    .auth-page form { margin-top: 34px; }
+    .auth-page .field { margin: 0 0 20px; }
+    .auth-page .field label { font-size: 12px; }
+    .auth-page .field input { min-height: 48px; }
+    .auth-page .btn { margin-top: 2px; min-height: 48px; color: #fff; }
+    .auth-form-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: -4px 0 14px; font-size: 10px; color: var(--muted); }
+    .auth-form-meta button { border: 0; padding: 0; background: none; color: var(--ink); font-size: 10px; text-decoration: underline; cursor: pointer; }
+    .auth-page .field input[readonly] { background: #f5f5f5; color: #77796f; }
+    .auth-page .field .help { margin: -3px 0 0; }
+    .auth-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--muted); font-size: 12px; }
+    .auth-divider:before, .auth-divider:after { content: ""; height: 1px; flex: 1; background: var(--line); }
+    .google-button { width: 100%; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 11px; border: 1px solid #dadce0; border-radius: 3px; background: #fff; color: #3c4043; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .google-button:hover { background: #f8faff; border-color: #c5d2f3; }
+    .google-button svg { width: 19px; height: 19px; flex: 0 0 19px; }
+    .home-page { padding-top: 17px; }
+    .greeting { margin-bottom: 18px; }
+    .greeting h2 { font-size: 21px; margin-bottom: 4px; }
+    .recommendation { border: 1px solid var(--line); padding: 14px; margin-bottom: 19px; }
+    .recommendation h2 { margin: 8px 0; }
+    .recommendation .btn { width: 100%; margin-top: 10px; }
+    .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .category-grid .quick-chip { min-height: 48px; }
+    .package-list { padding: 0; }
+    .package-card { display: block; min-height: 0; padding: 12px; }
+    .package-art { display: none; }
+    .package-copy { padding: 0; }
+    .package-copy h3 { font-size: 14px; }
+    .package-copy .tag { display: none; }
+    .package-copy p { margin: 3px 0 7px; }
+    .price-row { justify-content: flex-start; }
+    .price-row .rating { margin-left: 6px; }
+    .section-heading { padding: 0; margin: 20px 0 10px; }
+    .package-list .section-heading { padding: 0 16px; }
+    .package-filters { display: flex; gap: 8px; align-items: stretch; margin: 14px 0 9px; }
+    .package-filters .field { flex: 1; margin: 0; }
+    .package-filters input { min-height: 42px; }
+    .package-filters .btn { min-height: 42px; padding: 0 14px; }
+    .package-count { margin: 8px 0 12px; font-size: 12px; font-weight: 700; }
+    .option-card { border: 1px solid var(--line); padding: 12px; margin: 8px 0; display: flex; gap: 9px; align-items: center; font-size: 13px; }
+    .filter-bottom { position: sticky; bottom: 68px; background: #fff; padding-top: 12px; }
+    .filter-bottom .btn + .btn { margin-top: 8px; }
+    .scene { height: 190px; margin: -16px -16px 16px; }
+    .detail-info { margin: 14px 0; }
+    .detail-info .form-card { margin: 10px 0; }
+    .detail-bottom { position: sticky; bottom: 68px; padding: 10px 0 0; background: #fff; }
+    .method { min-height: 55px; }
+    .instruction-list { padding-left: 17px; font-size: 11px; line-height: 1.65; }
+    .ticket { border: 1px solid var(--line); padding: 14px; margin: 14px 0; }
+    .ticket-code { text-align: center; font-size: 19px; font-weight: 800; margin: 8px 0; }
+    .order-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-bottom: 1px solid var(--line); }
+    .order-tab { border: 0; border-bottom: 2px solid transparent; background: #fff; padding: 10px 3px; font-size: 10px; cursor: pointer; }
+    .order-tab.active { border-color: var(--lime); background: var(--lime); font-weight: 700; }
+    .order-preview-label { margin: 15px 0 8px; font-size: 9px; font-weight: 750; color: var(--muted); }
+    .account-number { flex-direction: column; align-items: stretch; }
+    .file-picker { display: flex; align-items: center; gap: 10px; padding: 8px; border: 1px solid var(--line); background: #fff; text-align: left; }
+    .file-picker span:last-child { color: var(--muted); font-size: 11px; }
+    .file-picker-button { padding: 7px 10px; border: 1px solid #cfd0c8; background: #fff; font-size: 10px; }
+    .logout-state .btn + .btn { margin-top: 8px; }
+    .logout-confirm { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 22px; background: rgba(0,0,0,.42); }
+    .logout-dialog { width: 100%; max-width: 360px; border: 1px solid var(--line); padding: 16px; background: #fff; }
+    .logout-dialog .btn + .btn { margin-top: 8px; }
+    [hidden] { display: none !important; }
+    @media (max-height: 760px) {
+      .welcome-page { padding-bottom: 80px; }
+      .welcome-image { height: 200px; margin-bottom: 14px; }
+      .welcome-page h1 { font-size: 22px; margin-bottom: 6px; }
+      .welcome-steps { margin: 12px 0; }
+      .welcome-step { margin: 8px 0; }
+      .welcome-actions { gap: 4px; }
+      .welcome-actions .btn { min-height: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main id="app" aria-live="polite"></main>
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button class="nav-item active" data-action="home" data-nav="home">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <span>Beranda</span>
+      </button>
+      <button class="nav-item" data-action="packages" data-nav="packages">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <span>Paket</span>
+      </button>
+      <button class="nav-item" data-action="orders" data-nav="orders">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <span>Pesanan Saya</span>
+      </button>
+      <button class="nav-item" data-action="profile" data-nav="profile">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <span>Profil</span>
+      </button>
+    </nav>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script>
+    const village = "Desa Wisata Purwabakti, Pamijahan";
+    const packages = [
+      { id: "agro", name: "Paket Agrowisata", category: "Edukasi/Pertanian", duration: "4 jam", location: village, adult: 150000, child: 100000, icon: "🌾", description: "Pengalaman belajar kegiatan pertanian dan mengenal keseharian desa bersama pendamping.", facilities: ["Pendamping kegiatan", "Peralatan praktik sederhana", "Air minum dan area istirahat"], schedule: ["08.00–08.30 · Berkumpul dan pengarahan", "08.30–09.30 · Pengenalan kegiatan pertanian", "09.30–11.00 · Praktik bersama pendamping", "11.00–12.00 · Istirahat, diskusi dan penutupan"] },
+      { id: "tracking", name: "Tracking Curug/Sawah", category: "Alam", duration: "3 jam", location: village, adult: 125000, child: 125000, icon: "🥾", description: "Jelajahi jalur alam, curug, dan persawahan di sekitar Desa Wisata Purwabakti." },
+      { id: "homestay", name: "Live-in Homestay", category: "Homestay", duration: "2 hari 1 malam", location: village, adult: 350000, child: 350000, icon: "🏡", description: "Menginap dan mengenal kehidupan warga Desa Wisata Purwabakti." }
+    ];
+    const state = {
+      screen: "welcome",
+      previousScreen: "home",
+      selectedPackage: packages[0],
+      date: "2026-11-21",
+      adults: 2,
+      children: 1,
+      name: "",
+      email: "",
+      phone: "",
+      note: "",
+      payment: "bank",
+      authMode: "login",
+      userName: "",
+      googleProfileTarget: "",
+      paymentUploaded: false,
+      orders: [],
+      activeOrderId: null,
+      orderCode: "",
+      paymentFile: "",
+      orderTab: "pending",
+      filterCategory: "Semua kategori",
+      filterDuration: "Semua durasi",
+      minPrice: "",
+      maxPrice: "",
+      confirmLogout: true,
+      search: ""
+    };
+    const app = document.querySelector("#app");
+    const rupiah = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
+    const totalPeople = () => state.adults + state.children;
+    const totalPrice = () => state.adults * state.selectedPackage.adult + state.children * state.selectedPackage.child;
+    const formatDate = value => {
+      if (!value) return "Pilih tanggal";
+      return new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${value}T00:00:00`));
+    };
+    const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    const displayNameFromEmail = value => {
+      const email = String(value || "").trim();
+      const localPart = email.indexOf("@") === -1 ? "" : email.slice(0, email.indexOf("@"));
+      if (!localPart) return "Pengguna";
+      return localPart
+        .replace(/[._-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .replace(/\b[a-z]/g, letter => letter.toUpperCase()) || "Pengguna";
+    };
+    const packageCard = item => `
+      <article class="package-card" data-package="${item.id}" tabindex="0" role="button" aria-label="Lihat detail ${item.name}">
+        <div class="package-copy">
+          <h3>${item.name}</h3>
+          <p>${item.category} · ${item.duration}</p>
+          <div class="price-row"><span class="price">${rupiah(item.adult)} <small>/ dewasa</small></span></div>
+          <button class="text-link" data-package="${item.id}">Lihat detail paket →</button>
+        </div>
+      </article>`;
+    const homePackageCard = item => `
+      <article class="package-card home-package-card" data-package="${item.id}" tabindex="0" role="button" aria-label="Lihat detail ${item.name}">
+        <div class="package-copy">
+          <h3>${item.name}</h3>
+          <p>★ 4,8 · ${item.duration} · contoh</p>
+          <div class="price-row"><span class="price">Mulai ${rupiah(item.adult)} <small>/ dewasa</small></span></div>
+        </div>
+      </article>`;
+    const screenHeader = title => `<header class="screen-header"><h1>${title}</h1></header>`;
+    const backButton = (label = "Kembali") => `<header class="screen-header"><button type="button" data-action="back" aria-label="Kembali">‹</button><h1>${label}</h1></header>`;
+    const detailLines = item => `
+      <div class="info-line"><span>Lokasi</span><strong>${item.location}</strong></div>
+      <div class="info-line"><span>Durasi</span><strong>${item.duration}</strong></div>
+      <div class="info-line"><span>Harga dewasa</span><strong>${rupiah(item.adult)} / orang</strong></div>
+      <div class="info-line"><span>Harga anak (3–12 tahun)</span><strong>${rupiah(item.child)} / orang</strong></div>`;
+    function render() {
+      const screen = state.screen;
+      const activeNav = ["order-detail", "success", "orders"].includes(screen)
+        ? "orders"
+        : ["detail", "booking", "checkout", "payment", "packages", "filter"].includes(screen)
+          ? "packages"
+          : ["profile", "auth", "complete-profile", "forgot-password", "reset-password", "terms", "help"].includes(screen)
+            ? "profile"
+            : "home";
+      document.querySelector(".bottom-nav").hidden = ["welcome", "auth", "google-success", "complete-profile"].includes(screen);
+      document.querySelectorAll("[data-nav]").forEach(button => button.classList.toggle("active", button.dataset.nav === activeNav));
+      const screens = {
+        welcome: renderWelcome,
+        home: renderHome,
+        packages: renderPackages,
+        filter: renderFilter,
+        detail: renderDetail,
+        booking: renderBooking,
+        checkout: renderCheckout,
+        payment: renderPayment,
+        success: renderSuccess,
+        orders: renderOrders,
+        "order-detail": renderOrderDetail,
+        profile: renderProfile,
+        auth: renderAuth,
+        "google-success": renderGoogleSuccess,
+        "complete-profile": renderCompleteProfile,
+        "forgot-password": renderForgotPassword,
+        "reset-password": renderResetPassword,
+        terms: renderTerms,
+        help: renderHelp
+      };
+      app.innerHTML = screens[screen]();
+      if (screen === "packages") renderPackageResults();
+      window.scrollTo(0, 0);
+    }
+    function renderPackageResults() {
+      const container = app.querySelector("#all-packages");
+      if (!container) return;
+      const query = (state.search || "").toLocaleLowerCase("id");
+      const results = packages.filter(item => {
+        const matchesQuery = `${item.name} ${item.category} ${item.location}`.toLocaleLowerCase("id").includes(query);
+        const matchesCategory = state.filterCategory === "Semua kategori" || item.category.toLowerCase() === state.filterCategory.toLowerCase();
+        const matchesPrice = item.adult >= Number(state.minPrice || 0) && item.adult <= Number(state.maxPrice || 500000);
+        const matchesDuration = state.filterDuration === "Semua durasi"
+          || (state.filterDuration === "Hingga 4 jam" && ["3 jam", "4 jam"].includes(item.duration))
+          || (state.filterDuration === "Lebih dari 4 jam / 1 hari" && item.duration.includes("hari") === false && Number.parseInt(item.duration, 10) > 4)
+          || (state.filterDuration === "Menginap" && item.duration.includes("hari"));
+        return matchesQuery && matchesCategory && matchesPrice && matchesDuration;
+      });
+      app.querySelector("#package-count").textContent = `${results.length} paket · ${state.filterCategory}`;
+      container.innerHTML = results.map(packageCard).join("") || `<div class="empty"><h3>Paket tidak ditemukan</h3><p>Coba ubah kata pencarian atau filter.</p></div>`;
+    }
+    function renderWelcome() {
+      return `<header class="screen-header"><h1>Selamat datang</h1></header>
+        <section class="page welcome-page">
+          <div class="welcome-image" role="img" aria-label="Sawah di Desa Wisata Purwabakti, Pamijahan, Kabupaten Bogor"></div>
+          <h1>Kenali Desa, Susun perjalanan Anda.</h1>
+          <p class="lede">Temukan pengalaman di Desa Wisata Purwabakti, Pamijahan bersama Nyaah Lembur.</p>
+          <div class="welcome-steps">
+            <div class="welcome-step"><strong>01</strong><div><strong>Jelajahi destinasi</strong><p>Lihat kategori dan informasi paket wisata.</p></div></div>
+            <div class="welcome-step"><strong>02</strong><div><strong>Pesan paket pilihan</strong><p>Tentukan tanggal dan jumlah peserta.</p></div></div>
+            <div class="welcome-step"><strong>03</strong><div><strong>Bayar secara daring</strong><p>Pilih metode, lalu terima tiket setelah terverifikasi.</p></div></div>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn" data-action="auth">Mulai Menjelajah</button>
+            <button class="btn ghost" data-action="home"><u>Lewati pengantar</u></button>
+          </div>
+        </section>`;
+    }
+    function renderHome() {
+      const greetingName = state.userName ? state.userName.split(/\s+/)[0] : "Pengunjung";
+      return `${screenHeader("Beranda")}<section class="page home-page">
+        <div class="greeting"><h2>Halo, ${esc(greetingName.toLocaleUpperCase("id"))}!</h2><p class="lede">Desa Purwabakti, Pamijahan</p></div>
+        <div class="recommendation"><div class="eyebrow">REKOMENDASI NYAAH LEMBUR</div><h2>Temukan pengalaman desa pilihan</h2><p class="lede">Pilih paket yang sesuai dengan rencana kunjungan Anda.</p><button class="btn outline" data-action="packages">Jelajahi Paket</button></div>
+        <div class="section-heading"><h2>Pilih kategori</h2></div>
+        <div class="category-grid">
+          <button class="quick-chip" data-filter="Alam">Alam</button>
+          <button class="quick-chip" data-filter="Edukasi/Pertanian">Edukasi/Pertanian</button>
+          <button class="quick-chip" data-filter="Kuliner">Kuliner</button>
+          <button class="quick-chip" data-filter="Homestay">Homestay</button>
+        </div>
+        <div class="section-heading"><h2>Pilihan untuk Anda</h2><button class="text-link" data-action="packages">Lihat semua</button></div>
+        <div class="package-list">${homePackageCard(packages[0])}</div>
+      </section>`;
+    }
+    function renderPackages() {
+      return `${backButton("Paket wisata")}<section class="page">
+        <div class="package-filters"><div class="field"><input id="package-search" type="search" aria-label="Cari nama paket" placeholder="Cari nama paket..." value="${esc(state.search || "")}"></div><button class="btn outline" data-action="filter">Filter</button></div>
+        <div class="package-count" id="package-count"></div>
+        <div class="package-list" id="all-packages"></div></section>`;
+    }
+    function renderFilter() {
+      const categories = ["Semua kategori", "Alam", "Edukasi/Pertanian", "Kuliner", "Homestay"];
+      const durations = ["Semua durasi", "Hingga 4 jam", "Lebih dari 4 jam / 1 hari", "Menginap"];
+      return `${backButton("Filter paket")}<section class="page">
+        <h3>Kategori</h3>${categories.map(value => `<label class="option-card"><input type="radio" name="filter-category" value="${value}" ${state.filterCategory === value ? "checked" : ""}>${value}</label>`).join("")}
+        <h3 style="margin-top:20px">Harga per orang · contoh</h3>
+        <div class="package-filters"><div class="field"><label for="price-min">Minimum</label><input id="price-min" type="number" min="0" value="${state.minPrice}" placeholder="Rp0"></div><div class="field"><label for="price-max">Maksimum</label><input id="price-max" type="number" min="0" value="${state.maxPrice}" placeholder="Rp500.000"></div></div>
+        <h3 style="margin-top:20px">Durasi</h3>${durations.map(value => `<label class="option-card"><input type="radio" name="filter-duration" value="${value}" ${state.filterDuration === value ? "checked" : ""}>${value}</label>`).join("")}
+        <div class="filter-bottom"><button class="btn full" data-action="apply-filter">Terapkan Filter</button><button class="btn outline full" data-action="reset-filter">Reset Filter</button></div>
+      </section>`;
+    }
+    function renderDetail() {
+      const item = state.selectedPackage;
+      const about = item.id === "agro"
+        ? "Kegiatan pengenalan pertanian untuk keluarga atau kelompok. Rangkaian aktivitas dan ketersediaan akan dikonfirmasi oleh admin Nyaah Lembur."
+        : item.description;
+      return `${backButton("Detail paket")}<section class="page">
+        <div class="eyebrow">${item.category.toUpperCase()}</div>
+        <h1>${item.name}</h1><p class="lede">${item.description}</p>
+        <div class="detail-info">
+          <div class="form-card"><h3>Tentang paket</h3><p class="lede">${about}</p></div>
+          <div class="form-card"><h3>Harga peserta ·</h3>
+            <div class="info-line"><span>Dewasa / orang</span><strong>${rupiah(item.adult)}</strong></div>
+            <div class="info-line"><span>Anak / orang</span><strong>${rupiah(item.child)}</strong></div>
+            <p class="helper-note">Contoh kategori anak: usia 3–12 tahun.</p>
+          </div>
+          <div class="form-card"><h3>Fasilitas ·</h3><ul class="facility-list">${(item.facilities || ["Pendamping kegiatan", "Aktivitas sesuai paket", "Area istirahat"]).map(value => `<li>${value}</li>`).join("")}</ul></div>
+          ${item.schedule ? `<div class="form-card"><h3>Rincian kegiatan</h3>${item.schedule.map(value => `<p class="helper-note">${value}</p>`).join("")}</div>` : ""}
+        </div>
+        <div class="detail-bottom"><div class="info-line"><strong>Mulai / dewasa · contoh</strong><strong>${rupiah(item.adult)}</strong></div><button class="btn full" data-action="booking">Pesan Sekarang / Booking</button></div>
+      </section>`;
+    }
+    function renderBooking() {
+      const item = state.selectedPackage;
+      return `${backButton("Formulir pemesanan")}<section class="page">
+        <div class="selected-package"><h3>${item.name}</h3><p>${item.category} · ${item.duration}<br>${item.location}</p></div>
+        <div class="field"><label for="visit-date">Tanggal kunjungan *</label><input id="visit-date" type="date" min="${new Date().toISOString().slice(0,10)}" value="${esc(state.date)}" required></div>
+        <div class="form-card"><h3>Jumlah peserta *</h3>
+          <div class="quantity"><div><strong>Dewasa</strong><small>${rupiah(item.adult)} / orang · contoh</small></div><div class="stepper"><button data-qty="adults" data-delta="-1" aria-label="Kurangi dewasa">−</button><output>${state.adults}</output><button data-qty="adults" data-delta="1" aria-label="Tambah dewasa">+</button></div></div>
+          <div class="quantity"><div><strong>Anak (3–12 tahun)</strong><small>${rupiah(item.child)} / orang · contoh</small></div><div class="stepper"><button data-qty="children" data-delta="-1" aria-label="Kurangi anak">−</button><output>${state.children}</output><button data-qty="children" data-delta="1" aria-label="Tambah anak">+</button></div></div>
+          <p class="helper-note">Total ${totalPeople()} peserta · minimal 1 orang</p>
+        </div>
+        <h2 style="margin-top:20px">Data pemesan</h2>
+        <div class="field"><label for="customer-name">Nama lengkap *</label><input id="customer-name" autocomplete="name" placeholder="Nama sesuai data pemesan" value="${esc(state.name)}" required></div>
+        <div class="field"><label for="customer-phone">No. WhatsApp *</label><input id="customer-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Nomor WhatsApp pemesan" value="${esc(state.phone)}" required><p class="help">Nomor ini juga ditampilkan di informasi akun.</p></div>
+        <div class="field"><label for="booking-note">Catatan khusus (opsional)</label><textarea id="booking-note" placeholder="Contoh: membawa 1 anak usia 8 tahun...">${esc(state.note)}</textarea></div>
+        ${renderSummary()}
+        <div class="sticky-action"><button class="btn full" data-action="checkout">Lanjut Pembayaran · ${rupiah(totalPrice())}</button></div>
+      </section>`;
+    }
+    function renderSummary() {
+      const adultTotal = state.adults * state.selectedPackage.adult;
+      const childTotal = state.children * state.selectedPackage.child;
+      return `<div class="summary"><h3>Rincian biaya · contoh</h3>
+        <div class="summary-line"><span>${state.adults} dewasa × ${rupiah(state.selectedPackage.adult)}</span><strong>${rupiah(adultTotal)}</strong></div>
+        <div class="summary-line"><span>${state.children} anak × ${rupiah(state.selectedPackage.child)}</span><strong>${rupiah(childTotal)}</strong></div>
+        <div class="summary-line"><span>Biaya layanan</span><strong>${rupiah(0)}</strong></div>
+        <div class="summary-line total"><span>Total bayar</span><strong>${rupiah(totalPrice())}</strong></div></div>`;
+    }
+    function renderCheckout() {
+      const methods = [
+        ["bank", "Transfer Bank", "Unggah bukti · verifikasi oleh admin", "B"],
+        ["qris", "QRIS", "Pindai QR · konfirmasi otomatis", "▦"],
+        ["gopay", "GoPay", "Dompet digital · konfirmasi otomatis", "G"],
+        ["ovo", "OVO", "Dompet digital · konfirmasi otomatis", "O"],
+        ["shopeepay", "ShopeePay", "Dompet digital · konfirmasi otomatis", "S"]
+      ];
+      return `${backButton("Pilih pembayaran")}<section class="page">
+        <div class="summary"><h3>Ringkasan pesanan · contoh</h3><div class="summary-line"><span>Nomor pesanan</span><strong>${esc(state.orderCode || "NL-CONTOH-001")}</strong></div><div class="summary-line"><span>${state.selectedPackage.name}</span><strong></strong></div><div class="summary-line"><span>Kunjungan</span><strong>${formatDate(state.date)} · 08.00 WIB</strong></div><div class="summary-line"><span>Peserta</span><strong>${state.adults} dewasa · ${state.children} anak</strong></div></div>
+        <h2>Metode pembayaran</h2>
+        <div class="payment-methods" role="group" aria-label="Pilih metode pembayaran">${methods.map(item => `<button class="method ${state.payment === item[0] ? "selected" : ""}" data-payment="${item[0]}"><span class="radio"></span><span class="method-text"><strong>${item[1]}</strong><small>${item[2]}</small></span><span class="method-icon">${item[3]}</span></button>`).join("")}</div>
+        ${renderSummary()}
+        <div class="sticky-action"><button class="btn full" data-action="payment-method">Konfirmasi Metode · ${rupiah(totalPrice())}</button></div>
+      </section>`;
+    }
+    function renderPayment() {
+      const transfer = state.payment === "bank";
+      if (!transfer) return `${backButton("Pembayaran digital")}<section class="page center">
+        <div class="account-box"><h2>${state.payment.toUpperCase()}</h2><div class="qr" role="img" aria-label="Kode QR contoh, tidak dapat digunakan untuk pembayaran"><span></span></div><p class="helper-note">Kode pembayaran contoh · tidak dapat digunakan untuk transaksi.</p><div class="summary-line total"><span>Total bayar</span><strong>${rupiah(totalPrice())}</strong></div></div>
+        <div class="notice">Pembayaran digital hanya simulasi dalam prototipe ini.</div>
+        <button class="btn full" data-action="submit-payment">Konfirmasi Pembayaran Simulasi</button></section>`;
+      return `${backButton("Instruksi transfer bank")}<section class="page">
+        <div class="notice"><strong>Menunggu Pembayaran</strong><br>${esc(state.orderCode || "NL-CONTOH-001")} · ${state.selectedPackage.name}</div>
+        <div class="countdown"><span class="eyebrow">BATAS WAKTU BAYAR · CONTOH</span><strong id="timer">00:29:59</strong></div>
+        <div class="account-box"><div class="bank-name">Tujuan transfer · placeholder</div><h3 style="margin-top:8px">[BANK BNI]</h3>
+          <div class="account-number"><span>[NOMOR REKENING]</span><button class="copy-btn" data-copy="[NOMOR REKENING]">Salin Nomor Rekening</button></div>
+          <div class="summary-line total"><span>Total bayar · contoh</span><strong>${rupiah(totalPrice())}</strong></div>
+        </div>
+        <div class="form-card"><h3>Langkah pembayaran</h3><ol class="instruction-list">
+          <li>Buka aplikasi bank atau layanan transfer Anda.</li><li>Pilih transfer ke bank tujuan dan masukkan rekening di atas.</li>
+          <li>Masukkan tepat ${rupiah(totalPrice())}, lalu konfirmasi pembayaran.</li><li>Bukti transfer boleh diunggah, tetapi Anda tetap bisa lanjut tanpa berkas.</li>
+        </ol></div>
+        <div class="field"><label for="payment-proof">Bukti transfer (opsional)</label><label class="upload file-picker" for="payment-proof"><input id="payment-proof" type="file" accept="image/*"><span class="file-picker-button">Pilih berkas</span><span id="proof-label">${state.paymentFile ? esc(state.paymentFile) : "Belum ada berkas"}</span></label></div>
+        <button class="btn full" data-action="upload-payment">Unggah Bukti Transfer (Opsional)</button>
+        <div class="form-card"><h3>Status pesanan</h3><strong>${state.paymentUploaded ? "Menunggu Verifikasi" : "Menunggu Pembayaran"}</strong><p class="helper-note">${state.paymentUploaded ? "Bukti diterima. Admin akan memeriksa pembayaran." : "Anda dapat melanjutkan tanpa mengunggah bukti transfer."} Pantau status di Pesanan Saya. Tiket belum tersedia.</p></div>
+        <div class="sticky-action"><button class="btn full" data-action="check-payment">Konfirmasi dan Lanjut ke Diproses</button></div>
+      </section>`;
+    }
+    function renderSuccess() {
+      const order = currentOrder();
+      const item = order ? packages.find(packageItem => packageItem.id === order.packageId) : state.selectedPackage;
+      const packageName = order ? order.packageName : item.name;
+      const packageDuration = item ? item.duration : "Sesuai informasi paket";
+      const packageLocation = item ? item.location : "Informasi lokasi belum tersedia";
+      const adultCount = order ? order.adults : state.adults;
+      const childCount = order ? order.children : state.children;
+      const adultPrice = item ? adultCount * item.adult : 0;
+      const childPrice = item ? childCount * item.child : 0;
+      const orderStatus = order ? order.status : "Menunggu Pembayaran";
+      const isPaid = orderStatus === "Berhasil/Selesai";
+      const paymentMethod = {
+        bank: "Transfer Bank",
+        qris: "QRIS",
+        gopay: "GoPay",
+        ovo: "OVO",
+        shopeepay: "ShopeePay"
+      }[order ? order.payment : state.payment] || "Belum dipilih";
+      return `${backButton("Tiket & konfirmasi")}<section class="page">
+        <div class="notice" style="background:var(--lime);border:0"><strong>${isPaid ? "Pembayaran Berhasil · contoh" : "Status Pesanan · contoh"}</strong><br>${isPaid ? "Pembayaran terverifikasi. Tiket digital Anda sudah terbit." : `Pesanan Anda berstatus ${esc(orderStatus)}. Tiket tersedia setelah pembayaran terverifikasi.`}</div>
+        <div class="ticket"><div class="eyebrow center">TIKET DIGITAL · CONTOH</div><div class="ticket-code">${esc((order && order.id) || state.orderCode || "NL-CONTOH-001")}</div>
+          <img class="qr-image" src="assets/ticket-qr-example.png" alt="Kode QR tiket contoh, bukan tiket valid"><p class="helper-note center">Pada aplikasi nyata, tunjukkan tiket kepada petugas saat kedatangan.</p>
+        </div>
+        <div class="form-card"><h3>Rincian reservasi ·</h3>
+          <div class="info-line"><span>Paket</span><strong>${esc(packageName)}</strong></div><div class="info-line"><span>Pemesan</span><strong>${esc(order ? order.name : state.name)}</strong></div>
+          <div class="info-line"><span>No. WhatsApp</span><strong>${esc(order ? order.phone : state.phone)}</strong></div>
+          <div class="info-line"><span>Tanggal kunjungan</span><strong>${formatDate(order ? order.date : state.date)}</strong></div>
+          <div class="info-line"><span>Durasi</span><strong>${esc(packageDuration)}</strong></div><div class="info-line"><span>Lokasi</span><strong>${esc(packageLocation)}</strong></div>
+          <div class="info-line"><span>Peserta</span><strong>${adultCount} dewasa · ${childCount} anak</strong></div>
+          <div class="summary-line"><span>${adultCount} dewasa × ${rupiah(item ? item.adult : 0)}</span><strong>${rupiah(adultPrice)}</strong></div>
+          <div class="summary-line"><span>${childCount} anak × ${rupiah(item ? item.child : 0)}</span><strong>${rupiah(childPrice)}</strong></div>
+          <div class="info-line"><span>Metode pembayaran</span><strong>${paymentMethod}</strong></div>
+          <div class="info-line"><span>Status pembayaran</span><strong>${esc(orderStatus)}</strong></div>
+          <div class="summary-line total"><span>${isPaid ? "Total dibayar" : "Total reservasi"}</span><strong>${rupiah(order ? order.total : totalPrice())}</strong></div>
+          ${order && order.note ? `<div class="info-line"><span>Catatan</span><strong>${esc(order.note)}</strong></div>` : ""}
+        </div>
+        <div class="form-card"><h3>Titik kumpul Nyaah Lembur</h3><p class="lede">Desa Wisata Purwabakti, Pamijahan. Lokasi tepat akan dikonfirmasi oleh admin; alamat belum tersedia.</p><button class="btn outline full" data-action="meeting-point">Lihat Titik Kumpul</button></div>
+        <button class="btn full" data-action="contact-help">Hubungi Admin</button>
+        <button class="btn outline full" data-action="orders" style="margin-top:8px">Lihat Pesanan Saya</button>
+      </section>`;
+    }
+    function renderOrders() {
+      const orderCard = order => {
+        const key = order.status === "Berhasil/Selesai"
+          ? "done"
+          : order.status === "Menunggu Verifikasi"
+            ? "processing"
+            : "pending";
+        const action = key === "done" ? "Buka Rincian Tiket" : key === "processing" ? "Lihat Status Verifikasi" : "Lanjut ke Diproses";
+        const item = packages.find(packageItem => packageItem.id === order.packageId);
+        return `<article class="order-card" data-order="${esc(order.id)}" tabindex="0" role="button">
+          <strong>${key === "processing" ? "Diproses · " : ""}${esc(order.status)}</strong>
+          <div class="order-code">${esc(order.id)}</div>
+          <h3>${esc(order.packageName)}</h3>
+          <p class="helper-note">Nama pemesan: ${esc(order.name)}</p>
+          <p class="helper-note">WhatsApp: ${esc(order.phone)}</p>
+          <p class="lede">${formatDate(order.date)} · 08.00 WIB</p>
+          <p class="helper-note">${order.adults} dewasa + ${order.children} anak · ${rupiah(order.total)}</p>
+          ${key === "done" ? `<div class="ticket"><div class="eyebrow center">TIKET DIGITAL · CONTOH</div><div class="ticket-code">${esc(order.id)}</div><img class="qr-image" src="assets/ticket-qr-example.png" alt="Kode QR tiket contoh, bukan tiket valid"><div class="info-line"><span>Pemesan</span><strong>${esc(order.name)}</strong></div><div class="info-line"><span>Paket</span><strong>${esc(order.packageName)}</strong></div><div class="info-line"><span>Tanggal</span><strong>${formatDate(order.date)}</strong></div><div class="info-line"><span>Peserta</span><strong>${order.adults} dewasa · ${order.children} anak</strong></div><div class="summary-line total"><span>Total</span><strong>${rupiah(order.total)}</strong></div><p class="helper-note center">QR ini hanya contoh dan tidak berlaku untuk masuk.</p></div>` : ""}
+          <button class="btn outline full" data-order="${esc(order.id)}" data-order-action="${key}" style="margin-top:8px">${action}</button>
+          ${key === "processing" ? `<button class="btn full" data-order="${esc(order.id)}" data-order-action="complete" style="margin-top:8px">Lanjut ke Berhasil/Selesai</button>` : ""}
+        </article>`;
+      };
+      return `${screenHeader("Pesanan Saya")}<section class="page">
+        <div class="order-tabs">
+          <button class="order-tab ${state.orderTab === "pending" ? "active" : ""}" data-order-tab="pending">Menunggu Pembayaran</button>
+          <button class="order-tab ${state.orderTab === "processing" ? "active" : ""}" data-order-tab="processing">Diproses</button>
+          <button class="order-tab ${state.orderTab === "done" ? "active" : ""}" data-order-tab="done">Berhasil/Selesai</button>
+        </div>
+        ${state.orders.filter(order => state.orderTab === (order.status === "Berhasil/Selesai" ? "done" : order.status === "Menunggu Verifikasi" ? "processing" : "pending")).slice().reverse().map(orderCard).join("") || `<div class="empty"><h3>Belum ada pesanan</h3><p>Pesanan paket yang Anda buat akan muncul di sini.</p><button class="btn" data-action="packages">Jelajahi Paket</button></div>`}
+      </section>`;
+    }
+    function renderOrderDetail() {
+      const order = currentOrder();
+      if (!order) return `${backButton("Pesanan Saya")}<section class="page"><div class="empty"><h3>Pesanan tidak ditemukan</h3><button class="btn" data-action="orders">Kembali ke pesanan</button></div></section>`;
+      const item = packages.find(packageItem => packageItem.id === order.packageId);
+      const paymentMethod = {
+        bank: "Transfer Bank",
+        qris: "QRIS",
+        gopay: "GoPay",
+        ovo: "OVO",
+        shopeepay: "ShopeePay"
+      }[order.payment] || "Belum dipilih";
+      return `${backButton("Status pesanan")}<section class="page">
+        <div class="status-card"><div class="status-top"><div><div class="eyebrow">NOMOR PESANAN</div><h3 style="margin:5px 0 0">${order.id}</h3></div><span class="status-pill">${order.status}</span></div>
+        <div class="progress"><span class="dot done">✓</span><span class="progress-track"></span><span class="dot done">✓</span><span class="progress-track"></span><span class="dot ${order.status === "Berhasil/Selesai" ? "done" : ""}">${order.status === "Berhasil/Selesai" ? "✓" : "3"}</span></div><div class="order-meta"><span>Dipesan</span><span>Pembayaran</span><span>Konfirmasi</span></div></div>
+        <div class="summary"><h3>Ringkasan perjalanan</h3><div class="info-line"><span>Paket</span><strong>${esc(order.packageName)}</strong></div><div class="info-line"><span>Kategori</span><strong>${esc(item ? item.category : "—")}</strong></div><div class="info-line"><span>Tanggal kunjungan</span><strong>${formatDate(order.date)}</strong></div><div class="info-line"><span>Durasi</span><strong>${esc(item ? item.duration : "—")}</strong></div><div class="info-line"><span>Lokasi</span><strong>${esc(item ? item.location : "—")}</strong></div><div class="info-line"><span>Peserta</span><strong>${order.adults} dewasa · ${order.children} anak (${order.people} orang)</strong></div><div class="info-line"><span>Nama pemesan</span><strong>${esc(order.name)}</strong></div><div class="info-line"><span>No. WhatsApp</span><strong>${esc(order.phone)}</strong></div><div class="info-line"><span>Metode pembayaran</span><strong>${paymentMethod}</strong></div>${order.note ? `<div class="info-line"><span>Catatan</span><strong>${esc(order.note)}</strong></div>` : ""}<div class="summary-line total"><span>Total reservasi</span><strong>${rupiah(order.total)}</strong></div></div>
+        <div class="notice">Admin akan mengonfirmasi status pesanan melalui nomor WhatsApp pemesan.</div>
+        ${order.status === "Menunggu Verifikasi" ? `<button class="btn full" data-order="${esc(order.id)}" data-order-action="complete">Lanjut ke Berhasil/Selesai</button>` : ""}
+        ${order.status === "Berhasil/Selesai" ? `<button class="btn full" data-order="${esc(order.id)}" data-order-action="done">Lihat Tiket Digital</button>` : ""}
+        <button class="btn outline full" data-action="home">Kembali ke beranda</button>
+      </section>`;
+    }
+    function renderProfile() {
+      return `${screenHeader("Profil")}<section class="page">
+        <h2>${esc(state.userName || "Pengunjung")}</h2><p class="lede">${state.userName ? "Pengguna Nyaah Lembur · contoh" : "Masuk untuk mengelola akun Anda."}</p>
+        <div class="form-card"><h3>Informasi akun</h3>
+          <div class="info-line"><span>Nama</span><strong>${esc(state.userName || "—")}</strong></div>
+          <div class="info-line"><span>Email</span><strong>${esc(state.email || "[Email pengguna]")}</strong></div>
+          <div class="info-line"><span>WhatsApp</span><strong>${esc(state.phone || "[Nomor WhatsApp pemesan]")}</strong></div>
+        </div>
+        <div class="form-card profile-history"><button class="profile-row" data-action="orders"><strong>Riwayat Transaksi/Pemesanan →</strong><span>›</span></button><p class="lede">Lihat pembayaran dan tiket di Pesanan Saya.</p></div>
+        ${state.userName ? `<button class="btn outline full" data-action="logout" style="margin-top:18px">Keluar</button>` : `<button class="btn full" data-action="auth" style="margin-top:18px">Masuk / Daftar</button>`}
+      </section>`;
+    }
+    function renderAuth() {
+      const signup = state.authMode === "signup";
+      return `${backButton(signup ? "Daftar akun" : "Masuk")}<section class="page auth-page">
+        <h1>${signup ? "Mulai perjalanan Anda" : "Kembali ke Nyaah Lembur"}</h1>
+        <p class="lede">${signup ? "Buat akun Nyaah Lembur untuk mengelola pemesanan dan tiket dalam satu tempat." : "Masuk untuk memesan paket dan melihat tiket perjalanan Anda."}</p>
+        <form id="auth-form">
+          ${signup ? `<div class="field"><label for="auth-name">Nama lengkap *</label><input id="auth-name" name="name" autocomplete="name" placeholder="Nama sesuai data pemesan" required></div>` : ""}
+          ${signup ? `<div class="field"><label for="auth-email">Email *</label><input id="auth-email" name="email" type="email" autocomplete="email" placeholder="nama@email.com" required></div><div class="field"><label for="auth-signup-phone">No. WhatsApp *</label><input id="auth-signup-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Nomor WhatsApp aktif" required></div>` : `<div class="field"><label for="auth-phone">Email / No. HP *</label><input id="auth-phone" name="identifier" autocomplete="username" placeholder="Masukkan email atau nomor HP" required></div>`}
+          <div class="field"><label for="auth-password">Password *</label><input id="auth-password" name="password" type="password" autocomplete="${signup ? "new-password" : "current-password"}" placeholder="${signup ? "Buat password" : "Masukkan password"}" minlength="${signup ? "8" : "1"}" required>${signup ? `<p class="help">Gunakan minimal 8 karakter.</p>` : ""}</div>
+          ${signup ? `<div class="field"><label for="auth-confirm">Konfirmasi password *</label><input id="auth-confirm" name="confirm" type="password" autocomplete="new-password" placeholder="Ulangi password" required></div>` : ""}
+          ${signup ? "" : `<div class="auth-form-meta"><span>* Wajib diisi</span><button type="button" data-action="forgot-password">Lupa kata sandi?</button></div>`}
+          <button class="btn full" type="submit">${signup ? "Daftar Sekarang" : "Masuk"}</button>
+        </form>
+        ${signup ? "" : `<div class="auth-divider"><span>atau</span></div>
+          <button class="google-button" type="button" data-action="google-login">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11c-.5 2.5-2 4.6-4.2 6v5h6.8c4-3.7 6-9 6-14.7z"/>
+              <path fill="#34A853" d="M24 44c5.4 0 10-1.8 13.4-4.8l-6.8-5c-1.8 1.2-4 2-6.6 2-5 0-9.2-3.4-10.7-8H6.3v5.2C9.6 39.8 16.3 44 24 44z"/>
+              <path fill="#FBBC05" d="M13.3 28.2a12 12 0 0 1 0-8.4v-5.2H6.3a20 20 0 0 0 0 18.8l7-5.2z"/>
+              <path fill="#EA4335" d="M24 11.8c2.9 0 5.5 1 7.5 3l5.8-5.8C33.9 5.7 29.4 4 24 4 16.3 4 9.6 8.2 6.3 14.6l7 5.2c1.5-4.6 5.7-8 10.7-8z"/>
+            </svg>
+            Masuk menggunakan Google
+          </button>`}
+      </section>`;
+    }
+    function renderCompleteProfile() {
+      return `${backButton("Lengkapi informasi")}<section class="page auth-page">
+        <h1>Satu langkah lagi</h1>
+        <p class="lede">Anda sudah masuk dengan Google. Lengkapi informasi berikut untuk melanjutkan.</p>
+        <form id="google-profile-form">
+          <div class="field"><label for="google-profile-name">Nama</label><input id="google-profile-name" name="name" autocomplete="name" placeholder="Nama" required></div>
+          <div class="field"><label for="google-profile-email">Email</label><input id="google-profile-email" name="email" type="email" autocomplete="email" placeholder="Email" required></div>
+          <div class="field"><label for="google-profile-password">Password</label><input id="google-profile-password" name="password" type="password" autocomplete="new-password" placeholder="Password" required></div>
+          <button class="btn full" type="submit">Simpan dan Lanjutkan</button>
+        </form>
+        <p class="helper-note center">Pastikan email yang dimasukkan sudah benar.</p>
+      </section>`;
+    }
+    function renderGoogleSuccess() {
+      return `${backButton("Berhasil Login")}<section class="page auth-page center">
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <h1>Berhasil Login</h1>
+        <p class="lede">Login menggunakan Google berhasil. Lengkapi informasi akun untuk melanjutkan.</p>
+        <button class="btn full" data-action="google-continue">Lengkapi Informasi</button>
+        <button class="btn outline full" data-action="google-cancel" style="margin-top:8px">Kembali ke Login Google</button>
+      </section>`;
+    }
+    function renderForgotPassword() {
+      return `${backButton("Lupa kata sandi")}<section class="page auth-page">
+        <h1>Lupa kata sandi?</h1>
+        <p class="lede">Masukkan email yang terdaftar. Kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda.</p>
+        <form id="forgot-password-form">
+          <div class="field"><label for="reset-email">Email terdaftar *</label><input id="reset-email" name="email" type="email" autocomplete="email" placeholder="Masukkan alamat email" value="${esc(state.email === "[Email pengguna]" ? "" : state.email)}" required></div>
+          <p class="helper-note">Masuk dengan Google? Gunakan tombol Google di halaman Masuk, tanpa mengatur ulang kata sandi.</p>
+          <button class="btn full" type="submit">Kirim Tautan Reset</button>
+        </form>
+        <div class="center" style="margin-top:14px"><button class="text-link" data-action="show-login">Kembali ke Masuk</button></div>
+      </section>`;
+    }
+    function renderResetPassword() {
+      return `${backButton("Ganti kata sandi")}<section class="page auth-page">
+        <h1>Buat kata sandi baru</h1>
+        <p class="lede">Gunakan kata sandi yang kuat dan berbeda dari kata sandi sebelumnya.</p>
+        <form id="reset-password-form">
+          <div class="field"><label for="new-password">Kata sandi baru *</label><input id="new-password" name="password" type="password" autocomplete="new-password" placeholder="Masukkan kata sandi baru" minlength="8" required><p class="help">Minimal 8 karakter, gunakan huruf dan angka.</p></div>
+          <div class="field"><label for="confirm-new-password">Konfirmasi kata sandi baru *</label><input id="confirm-new-password" name="confirm" type="password" autocomplete="new-password" placeholder="Ulangi kata sandi baru" required></div>
+          <button class="btn full" type="submit">Simpan Kata Sandi</button>
+        </form>
+        <p class="helper-note center">Setelah disimpan, masuk dengan kata sandi baru.</p>
+      </section>`;
+    }
+    function renderTerms() {
+      return `<section class="page">${backButton("Kembali")}<div class="eyebrow">INFORMASI</div><h1>Syarat dan ketentuan</h1><p class="lede">Ketentuan singkat untuk pengalaman wisata yang nyaman.</p>
+        <div class="form-card"><h3>Pemesanan</h3><p class="lede">Pesanan dianggap diterima setelah detail perjalanan dikirim dan pembayaran diverifikasi. Pastikan tanggal, jumlah peserta, serta nomor WhatsApp sudah benar.</p></div>
+        <div class="form-card"><h3>Pembayaran</h3><p class="lede">Bayar sesuai nominal yang tertera sebelum batas waktu. Simpan bukti pembayaran sampai pesanan mendapat konfirmasi.</p></div>
+        <div class="form-card"><h3>Perubahan dan pembatalan</h3><p class="lede">Hubungi tim Nyaah Lembur melalui pusat bantuan jika ingin mengubah jadwal atau membatalkan pesanan. Perubahan bergantung pada ketersediaan paket.</p></div>
+        <div class="notice">Dengan menyelesaikan pemesanan, Anda menyatakan telah membaca ketentuan ini.</div></section>`;
+    }
+    function renderHelp() {
+      return `<section class="page">${backButton("Profil")}<div class="eyebrow">KAMI SIAP MEMBANTU</div><h1>Pusat bantuan</h1><p class="lede">Ada yang ingin ditanyakan? Tim kami siap membantu rencana perjalanan Anda.</p>
+        <div class="form-card"><h3>WhatsApp</h3><p class="lede">Hubungi tim layanan pelanggan untuk bantuan pemesanan dan perubahan jadwal.</p><button class="btn outline" data-action="contact-help">Hubungi kami</button></div>
+        <div class="form-card"><h3>Pertanyaan umum</h3><div class="info-line"><strong>Bagaimana cara mengubah jadwal?</strong><span>+</span></div><p class="lede">Hubungi tim kami sebelum tanggal kunjungan untuk memeriksa ketersediaan.</p><div class="info-line"><span>Kapan pesanan dikonfirmasi?</span><span>+</span></div><p class="lede">Setelah bukti pembayaran Anda berhasil diverifikasi.</p></div></section>`;
+    }
+    function currentOrder() {
+      if (state.activeOrderId) {
+        return state.orders.find(order => order.id === state.activeOrderId) || null;
+      }
+      return state.orders[state.orders.length - 1] || null;
+    }
+    function showToast(message) {
+      const toast = document.querySelector("#toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timeout);
+      showToast.timeout = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+    function navigate(screen) {
+      state.previousScreen = state.screen;
+      state.screen = screen;
+      render();
+    }
+    function validateBooking() {
+      const form = app.querySelector("section");
+      const date = app.querySelector("#visit-date").value;
+      const name = app.querySelector("#customer-name").value.trim();
+      const phone = app.querySelector("#customer-phone").value.trim();
+      if (!date) { showToast("Pilih tanggal kunjungan terlebih dahulu."); return false; }
+      if (!name) { showToast("Masukkan nama lengkap pemesan."); app.querySelector("#customer-name").focus(); return false; }
+      if (!phone || phone.replace(/\D/g, "").length < 8) { showToast("Masukkan nomor WhatsApp yang aktif."); app.querySelector("#customer-phone").focus(); return false; }
+      state.date = date;
+      state.name = name;
+      state.phone = phone;
+      state.note = app.querySelector("#booking-note").value.trim();
+      state.orderCode = `NL-CONTOH-${String(state.orders.length + 1).padStart(3, "0")}`;
+      state.activeOrderId = null;
+      return Boolean(form);
+    }
+    app.addEventListener("input", event => {
+      if (event.target.id === "visit-date") state.date = event.target.value;
+      if (event.target.id === "customer-name") state.name = event.target.value;
+      if (event.target.id === "customer-phone") state.phone = event.target.value;
+      if (event.target.id === "booking-note") state.note = event.target.value;
+      if (event.target.id === "package-search") {
+        state.search = event.target.value;
+        renderPackageResults();
+      }
+      if (event.target.id === "payment-proof") {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        if (!file.type.startsWith("image/")) { showToast("Unggah file gambar berformat JPG atau PNG."); event.target.value = ""; return; }
+        if (file.size > 5 * 1024 * 1024) { showToast("Ukuran file maksimal 5 MB."); event.target.value = ""; return; }
+        state.paymentFile = file.name;
+        app.querySelector("#proof-label").textContent = file.name;
+      }
+    });
+    app.addEventListener("change", event => {
+      if (event.target.name === "filter-category") state.filterCategory = event.target.value;
+      if (event.target.name === "filter-duration") state.filterDuration = event.target.value;
+    });
+    document.addEventListener("click", async event => {
+      const packageEl = event.target.closest("[data-package]");
+      if (packageEl) {
+        state.selectedPackage = packages.find(item => item.id === packageEl.dataset.package);
+        navigate("detail");
+        return;
+      }
+      const orderEl = event.target.closest("[data-order]");
+      if (orderEl) {
+        state.activeOrderId = orderEl.dataset.order;
+        const order = currentOrder();
+        const selected = order && packages.find(item => item.id === order.packageId);
+        if (selected) state.selectedPackage = selected;
+        if (order) {
+          state.orderCode = order.id;
+          state.date = order.date;
+          state.name = order.name;
+          state.phone = order.phone;
+          state.adults = order.adults;
+          state.children = order.children;
+          state.note = order.note || "";
+          state.payment = order.payment;
+          state.paymentUploaded = order.status === "Menunggu Verifikasi";
+        }
+        if (orderEl.dataset.orderAction === "pending") {
+          order.status = "Menunggu Verifikasi";
+          state.paymentUploaded = false;
+          state.orderTab = "processing";
+          showToast("Pesanan dipindahkan ke Diproses.");
+          navigate("orders");
+        } else if (orderEl.dataset.orderAction === "complete") {
+          order.status = "Berhasil/Selesai";
+          state.orderTab = "done";
+          showToast("Pesanan berhasil dikonfirmasi. Tiket digital tersedia.");
+          navigate("orders");
+        } else if (orderEl.dataset.orderAction === "done") {
+          navigate("success");
+        } else {
+          navigate("order-detail");
+        }
+        return;
+      }
+      const orderTab = event.target.closest("[data-order-tab]");
+      if (orderTab) { state.orderTab = orderTab.dataset.orderTab; render(); return; }
+      const filter = event.target.closest("[data-filter]");
+      if (filter) {
+        state.filterCategory = filter.dataset.filter === "Semua" ? "Semua kategori" : filter.dataset.filter;
+        state.search = "";
+        navigate("packages");
+        return;
+      }
+      const payment = event.target.closest("[data-payment]");
+      if (payment) { state.payment = payment.dataset.payment; render(); return; }
+      const qty = event.target.closest("[data-qty]");
+      if (qty) {
+        const key = qty.dataset.qty;
+        state[key] = Math.max(key === "adults" ? 1 : 0, state[key] + Number(qty.dataset.delta));
+        render();
+        return;
+      }
+      const copy = event.target.closest("[data-copy]");
+      if (copy) {
+        try {
+          await navigator.clipboard.writeText(copy.dataset.copy);
+          showToast("Nomor rekening berhasil disalin.");
+        } catch (error) {
+          console.error("Gagal menyalin nomor rekening.", error);
+          showToast(`Tidak dapat menyalin. Salin manual: ${copy.dataset.copy}`);
+        }
+        return;
+      }
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
+      switch (button.dataset.action) {
+        case "welcome": navigate("welcome"); break;
+        case "home": navigate("home"); break;
+        case "packages":
+          state.search = "";
+          state.filterCategory = "Semua kategori";
+          state.filterDuration = "Semua durasi";
+          state.minPrice = "";
+          state.maxPrice = "";
+          navigate("packages");
+          break;
+        case "filter": navigate("filter"); break;
+        case "apply-filter":
+          state.filterCategory = app.querySelector('input[name="filter-category"]:checked').value;
+          state.filterDuration = app.querySelector('input[name="filter-duration"]:checked').value;
+          state.minPrice = app.querySelector("#price-min").value;
+          state.maxPrice = app.querySelector("#price-max").value;
+          navigate("packages");
+          break;
+        case "reset-filter":
+          state.filterCategory = "Semua kategori";
+          state.filterDuration = "Semua durasi";
+          state.minPrice = "";
+          state.maxPrice = "";
+          navigate("filter");
+          break;
+        case "orders": navigate("orders"); break;
+        case "profile": navigate("profile"); break;
+        case "terms": navigate("terms"); break;
+        case "help": navigate("help"); break;
+        case "contact-help": showToast("Hubungi WhatsApp layanan Nyaah Lembur."); break;
+        case "detail": navigate("detail"); break;
+        case "back": {
+          const backTargets = {
+            home: "welcome",
+            packages: "home",
+            filter: "packages",
+            detail: "packages",
+            booking: "detail",
+            checkout: "booking",
+            payment: "booking",
+            success: "orders",
+            orders: "home",
+            "order-detail": "orders",
+            profile: "home",
+            "complete-profile": "auth",
+            "forgot-password": "auth",
+            "reset-password": "forgot-password",
+            "google-success": "auth",
+            terms: "profile",
+            help: "profile"
+          };
+          const authReturn = state.googleProfileTarget === "home"
+            ? "welcome"
+            : state.googleProfileTarget === "profile"
+              ? "profile"
+              : state.previousScreen || "welcome";
+          const target = state.screen === "auth"
+            ? authReturn
+            : backTargets[state.screen] || state.previousScreen || "home";
+          if (state.screen === "auth") state.googleProfileTarget = "";
+          navigate(target);
+          break;
+        }
+        case "booking": state.adults = Math.max(1, state.adults); navigate("booking"); break;
+        case "checkout":
+          if (validateBooking()) {
+            state.payment = "bank";
+            state.paymentFile = "";
+            state.paymentUploaded = false;
+            navigate("checkout");
+          }
+          break;
+        case "payment-method": navigate("payment"); startTimer(); break;
+        case "upload-payment":
+          if (!state.paymentFile) {
+            showToast("Pilih bukti transfer terlebih dahulu.");
+            break;
+          }
+          state.paymentUploaded = true;
+          showToast("Bukti transfer berhasil diunggah.");
+          render();
+          break;
+        case "check-payment": submitPayment(); break;
+        case "submit-payment": submitPayment(); break;
+        case "order-detail": navigate("order-detail"); break;
+        case "auth": state.authMode = "login"; state.googleProfileTarget = ""; navigate("auth"); break;
+        case "forgot-password": navigate("forgot-password"); break;
+        case "show-signup":
+          state.authMode = "signup";
+          state.screen === "auth" ? render() : navigate("auth");
+          break;
+        case "show-login":
+          state.authMode = "login";
+          state.screen === "auth" ? render() : navigate("auth");
+          break;
+        case "google-login":
+          if (!state.googleProfileTarget) {
+            state.googleProfileTarget = state.previousScreen === "welcome" ? "home" : "profile";
+          }
+          state.name = "";
+          state.email = "";
+          state.phone = "";
+          navigate("google-success");
+          break;
+        case "google-continue": navigate("complete-profile"); break;
+        case "google-cancel": navigate("auth"); break;
+        case "logout":
+          state.userName = "";
+          state.name = "";
+          state.email = "";
+          state.phone = "";
+          state.authMode = "login";
+          showToast("Anda telah keluar.");
+          navigate("welcome");
+          break;
+        case "ticket": navigate("success"); break;
+        case "meeting-point": showToast("Lokasi titik kumpul akan dikonfirmasi oleh admin."); break;
+        case "copy": break;
+      }
+    });
+    app.addEventListener("keydown", event => {
+      if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-package], [data-order]")) {
+        event.preventDefault();
+        event.target.click();
+      }
+    });
+    app.addEventListener("submit", event => {
+      if (event.target.id === "google-profile-form") {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const name = String(data.get("name") || "").trim();
+        const email = String(data.get("email") || "").trim();
+        const password = String(data.get("password") || "").trim();
+        if (!name) {
+          showToast("Nama wajib diisi.");
+          app.querySelector("#google-profile-name").focus();
+          return;
+        }
+        if (!email || !app.querySelector("#google-profile-email").validity.valid) {
+          showToast("Masukkan alamat email yang benar.");
+          app.querySelector("#google-profile-email").focus();
+          return;
+        }
+        if (!password) {
+          showToast("Password wajib diisi.");
+          app.querySelector("#google-profile-password").focus();
+          return;
+        }
+        state.name = name;
+        state.email = email;
+        state.userName = name;
+        const destination = state.googleProfileTarget || "home";
+        state.googleProfileTarget = "";
+        showToast("berhasil masuk menggunakan google");
+        navigate(destination);
+        return;
+      }
+      if (event.target.id === "forgot-password-form") {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        state.email = String(data.get("email") || "").trim();
+        navigate("reset-password");
+        showToast("Tautan reset kata sandi berhasil dikirim.");
+        return;
+      }
+      if (event.target.id === "reset-password-form") {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        if (data.get("password") !== data.get("confirm")) {
+          showToast("Konfirmasi kata sandi tidak sama.");
+          app.querySelector("#confirm-new-password").focus();
+          return;
+        }
+        state.authMode = "login";
+        navigate("auth");
+        showToast("Kata sandi berhasil diperbarui.");
+        return;
+      }
+      if (event.target.id !== "auth-form") return;
+      event.preventDefault();
+      const data = new FormData(event.target);
+      const name = String(data.get("name") || "").trim();
+      if (state.authMode === "signup" && data.get("password") !== data.get("confirm")) {
+        showToast("Konfirmasi password tidak sama.");
+        app.querySelector("#auth-confirm").focus();
+        return;
+      }
+      if (state.authMode === "signup") {
+        state.userName = name;
+        state.name = name;
+        state.email = String(data.get("email") || "").trim();
+        state.phone = String(data.get("phone") || "").trim();
+      } else {
+        const identifier = String(data.get("identifier") || "").trim();
+        state.email = identifier.includes("@") ? identifier : "";
+        if (!state.email) state.phone = identifier;
+        state.userName = displayNameFromEmail(state.email);
+        state.name = state.userName;
+      }
+      showToast(state.authMode === "signup" ? "Akun berhasil dibuat." : "Berhasil masuk.");
+      navigate(state.previousScreen === "welcome" ? "home" : "profile");
+    });
+    function startTimer() {
+      clearInterval(startTimer.interval);
+      let remaining = 30 * 60 - 1;
+      const update = () => {
+        const timer = document.querySelector("#timer");
+        if (!timer) { clearInterval(startTimer.interval); return; }
+        const hours = String(Math.floor(remaining / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
+        const seconds = String(remaining % 60).padStart(2, "0");
+        timer.textContent = `${hours}:${minutes}:${seconds}`;
+        if (remaining <= 0) { clearInterval(startTimer.interval); showToast("Waktu pembayaran telah habis."); return; }
+        remaining -= 1;
+      };
+      update();
+      startTimer.interval = setInterval(update, 1000);
+    }
+    function submitPayment() {
+      const id = state.orderCode || `NL-CONTOH-${String(state.orders.length + 1).padStart(3, "0")}`;
+      const order = {
+        id,
+        packageId: state.selectedPackage.id,
+        packageName: state.selectedPackage.name,
+        date: state.date,
+        adults: state.adults,
+        children: state.children,
+        people: totalPeople(),
+        total: totalPrice(),
+        name: state.name,
+        phone: state.phone,
+        note: state.note,
+        payment: state.payment,
+        status: "Menunggu Verifikasi"
+      };
+      const existingOrder = state.orders.findIndex(existing => existing.id === id);
+      if (existingOrder >= 0) state.orders.splice(existingOrder, 1);
+      state.orders.push(order);
+      state.activeOrderId = id;
+      state.orderTab = "processing";
+      clearInterval(startTimer.interval);
+      showToast(state.paymentUploaded ? "Bukti pembayaran terkirim. Menunggu verifikasi." : "Pembayaran dilanjutkan. Menunggu verifikasi.");
+      navigate("orders");
+    }
+    render();
+  </script>
+</body>
+</html>
